@@ -33,5 +33,3 @@ def get3DColorMap(path_to_image, percent=0.01):
     plt = getPlt(pixels_list)
 
     return plt
-
-
