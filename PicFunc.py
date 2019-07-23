@@ -2,13 +2,13 @@ from PIL import Image
 import numpy as np
 
 
-def parseImage(path_to_image):
+def parse_image(path_to_image):
     original = Image.open(path_to_image)
 
     return original
 
 
-def getListofPixels(original):
+def get_list_of_pixels(original):
     pixels_list = []
     width, height = original.size
 
@@ -19,20 +19,20 @@ def getListofPixels(original):
     return pixels_list
 
 
-def applyLinearTrans(matrix, vector):
+def apply_linear_trans(matrix, vector):
     return np.dot(matrix, vector)
 
 
-def getChangedPixels(pixels_list, matrix):
+def get_changed_pixels(pixels_list, matrix):
     new_pixels_list = []
 
     for pixel in pixels_list:
-        new_pixels_list.append(applyLinearTrans(matrix, pixel))
+        new_pixels_list.append(apply_linear_trans(matrix, pixel))
 
     return new_pixels_list
 
 
-def getImageFromPixelsList(pixel_list, width, height):
+def get_image_from_pixels_list(pixel_list, width, height):
     new_image = Image.new('RGB', (width, height))
 
     for x in range(width):
@@ -43,11 +43,11 @@ def getImageFromPixelsList(pixel_list, width, height):
     return new_image
 
 
-def getChangedImage(path_to_image, matrix):
-    original = parseImage(path_to_image)
+def get_changed_image(path_to_image, matrix):
+    original = parse_image(path_to_image)
     width, height = original.size
-    pixels_list = getListofPixels(original)
-    new_pixels_list = getChangedPixels(pixels_list, matrix)
-    new_image = getImageFromPixelsList(new_pixels_list, width, height)
+    pixels_list = get_list_of_pixels(original)
+    new_pixels_list = get_changed_pixels(pixels_list, matrix)
+    new_image = get_image_from_pixels_list(new_pixels_list, width, height)
 
     return new_image
