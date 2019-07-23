@@ -1,12 +1,11 @@
-from PIL import Image
 import numpy as np
-from matplotlib import colors, pyplot as plt
-from PicFunc import getListofPixels, parseImage
+from matplotlib import pyplot as plt
+from PicFunc import get_list_of_pixels, parse_image
 from mpl_toolkits.mplot3d import Axes3D
 Axes3D = Axes3D
 
 
-def getPlt(pixels):
+def get_plt(pixels):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
 
@@ -24,12 +23,12 @@ def getPlt(pixels):
     return plt
 
 
-def get3DColorMap(path_to_image, percent=0.01):
-    original = parseImage(path_to_image)
-    pixels_list = np.unique(np.array(getListofPixels(original)), axis=0)
+def get_3d_color_map(path_to_image, percent=0.01):
+    original = parse_image(path_to_image)
+    pixels_list = np.unique(np.array(get_list_of_pixels(original)), axis=0)
 
     pixels_list = pixels_list[::int(1/percent)]
 
-    plt = getPlt(pixels_list)
+    plt = get_plt(pixels_list)
 
     return plt
