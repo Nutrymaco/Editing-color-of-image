@@ -2,11 +2,6 @@ from PIL import Image
 import numpy as np
 
 
-def parse_image(path_to_image):
-    original = Image.open(path_to_image)
-
-    return original
-
 
 def get_list_of_pixels(original):
     pixels_list = []
@@ -44,7 +39,7 @@ def get_image_from_pixels_list(pixel_list, width, height):
 
 
 def get_changed_image(path_to_image, matrix):
-    original = parse_image(path_to_image)
+    original = Image.open(path_to_image)
     width, height = original.size
     pixels_list = get_list_of_pixels(original)
     new_pixels_list = get_changed_pixels(pixels_list, matrix)
