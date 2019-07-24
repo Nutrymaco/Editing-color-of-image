@@ -1,7 +1,8 @@
 import numpy as np
 from matplotlib import pyplot as plt
-from PicFunc import get_list_of_pixels, parse_image
+from PicFunc import get_list_of_pixels
 from mpl_toolkits.mplot3d import Axes3D
+from PIL import Image
 Axes3D = Axes3D
 
 
@@ -24,7 +25,7 @@ def get_plt(pixels):
 
 
 def get_3d_color_map(path_to_image, percent=0.01):
-    original = parse_image(path_to_image)
+    original = Image.open(path_to_image)
     pixels_list = np.unique(np.array(get_list_of_pixels(original)), axis=0)
 
     pixels_list = pixels_list[::int(1/percent)]
