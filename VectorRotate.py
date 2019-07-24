@@ -9,7 +9,7 @@ def convert_degrees_to_radian(degrees):
 
 def get_rotated_image(path_to_image, x_rotate=0, y_rotate=0, z_rotate=0):
 
-    original = parse_image(path_to_image)
+    original = Image.open(path_to_image)
     width, height = original.size
     pixels_list = get_list_of_pixels(original)
 
